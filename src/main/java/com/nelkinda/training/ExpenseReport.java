@@ -43,15 +43,11 @@ public class ExpenseReport {
         System.out.println("Expenses " + new Date());
 
         for (Expense expense : expenses) {
-            printExpenseContribution(expense);
+            System.out.println(getExpenseName(expense) + "\t" + expense.amount + "\t" +  getMealOverExpensesMarker(expense));
         }
 
         System.out.println("Meal expenses: " + mealExpenses);
         System.out.println("Total expenses: " + total);
-    }
-
-    private static void printExpenseContribution(Expense expense) {
-        System.out.println(getExpenseName(expense) + "\t" + expense.amount + "\t" +  getMealOverExpensesMarker(expense));
     }
 
     private static int calculateMealExpense(Expense expense, int mealExpenses) {
