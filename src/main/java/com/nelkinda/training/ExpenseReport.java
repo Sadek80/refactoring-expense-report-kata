@@ -22,16 +22,20 @@ public class ExpenseReport {
         for (Expense expense : expenses) {
             mealExpenses = calculateMealExpense(expense, mealExpenses);
 
-            String expenseName = getExpenseName(expense);
-            String mealOverExpensesMarker = getMealOverExpensesMarker(expense);
-
-            System.out.println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
+            printExpenseContribution(expense);
 
             total += expense.amount;
         }
 
         System.out.println("Meal expenses: " + mealExpenses);
         System.out.println("Total expenses: " + total);
+    }
+
+    private static void printExpenseContribution(Expense expense) {
+        String expenseName = getExpenseName(expense);
+        String mealOverExpensesMarker = getMealOverExpensesMarker(expense);
+
+        System.out.println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
     }
 
     private static int calculateMealExpense(Expense expense, int mealExpenses) {
