@@ -11,14 +11,10 @@ public class ExpenseReport {
 
     private static ExpenseReportDetails getReportDetails(List<Expense> expenses) {
         int total = 0;
-
-        for (Expense expense : expenses) {
-            total += expense.amount;
-        }
-
         int mealExpenses = 0;
 
         for (Expense expense : expenses) {
+            total += expense.amount;
             mealExpenses = calculateMealExpense(expense, mealExpenses);
         }
 
