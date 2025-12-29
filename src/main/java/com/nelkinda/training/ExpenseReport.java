@@ -14,15 +14,18 @@ class Expense {
 
 public class ExpenseReport {
     public void printReport(List<Expense> expenses) {
+        int mealExpenses = calculateMealExpenses(expenses);
+        int total = calculateTotal(expenses);
+        printReport(expenses, mealExpenses, total);
+    }
+
+    private static int calculateMealExpenses(List<Expense> expenses) {
         int mealExpenses = 0;
 
         for (Expense expense : expenses) {
             mealExpenses = calculateMealExpense(expense, mealExpenses);
         }
-
-        int total = calculateTotal(expenses);
-
-        printReport(expenses, mealExpenses, total);
+        return mealExpenses;
     }
 
     private static int calculateTotal(List<Expense> expenses) {
