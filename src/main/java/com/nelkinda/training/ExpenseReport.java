@@ -6,8 +6,8 @@ import java.util.List;
 public class ExpenseReport {
     public void printReport(List<Expense> expenses) {
         int mealExpenses = calculateMealExpenses(expenses);
-        int total = calculateTotal(expenses);
-        printReport(expenses, mealExpenses, total);
+        var reportDetails = new ExpenseReportDetails(calculateTotal(expenses));
+        printReport(expenses, mealExpenses, reportDetails.getTotal());
     }
 
     private static int calculateMealExpenses(List<Expense> expenses) {
