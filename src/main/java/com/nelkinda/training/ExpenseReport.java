@@ -20,9 +20,7 @@ public class ExpenseReport {
         System.out.println("Expenses " + new Date());
 
         for (Expense expense : expenses) {
-            if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
-                mealExpenses += expense.amount;
-            }
+            mealExpenses = calculateMealExpense(expense, mealExpenses);
 
             String expenseName = getExpenseName(expense);
             String mealOverExpensesMarker = getMealOverExpensesMarker(expense);
@@ -34,6 +32,13 @@ public class ExpenseReport {
 
         System.out.println("Meal expenses: " + mealExpenses);
         System.out.println("Total expenses: " + total);
+    }
+
+    private static int calculateMealExpense(Expense expense, int mealExpenses) {
+        if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
+            mealExpenses += expense.amount;
+        }
+        return mealExpenses;
     }
 
     private static String getMealOverExpensesMarker(Expense expense) {
