@@ -21,10 +21,11 @@ public class ExpenseReport {
 
         for (Expense expense : expenses) {
             mealExpenses = calculateMealExpense(expense, mealExpenses);
-
-            printExpenseContribution(expense);
-
             total += expense.amount;
+        }
+
+        for (Expense expense : expenses) {
+            printExpenseContribution(expense);
         }
 
         System.out.println("Meal expenses: " + mealExpenses);
