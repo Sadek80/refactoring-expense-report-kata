@@ -6,7 +6,7 @@ import java.util.List;
 public class ExpenseReport {
     public void printReport(List<Expense> expenses) {
         var reportDetails = getReportDetails(expenses);
-        printReport(expenses, reportDetails.getMealExpenses(), reportDetails.getTotal());
+        printReport(expenses, reportDetails);
     }
 
     private static ExpenseReportDetails getReportDetails(List<Expense> expenses) {
@@ -24,15 +24,15 @@ public class ExpenseReport {
         return new ExpenseReportDetails(total, mealExpenses);
     }
 
-    private static void printReport(List<Expense> expenses, int mealExpenses, int total) {
+    private static void printReport(List<Expense> expenses, ExpenseReportDetails details) {
         System.out.println("Expenses " + new Date());
 
         for (Expense expense : expenses) {
             System.out.println(expense.expenseName() + "\t" + expense.amount + "\t" + getMealOverExpensesMarker(expense));
         }
 
-        System.out.println("Meal expenses: " + mealExpenses);
-        System.out.println("Total expenses: " + total);
+        System.out.println("Meal expenses: " + details.getMealExpenses());
+        System.out.println("Total expenses: " + details.getTotal());
     }
 
     private static String getMealOverExpensesMarker(Expense expense) {
