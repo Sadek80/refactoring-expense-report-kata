@@ -34,7 +34,7 @@ public class ExpenseReport {
         System.out.println("Expenses " + new Date());
 
         for (Expense expense : expenses) {
-            System.out.println(getExpenseName(expense) + "\t" + expense.amount + "\t" +  getMealOverExpensesMarker(expense));
+            System.out.println(expense.type.getName() + "\t" + expense.amount + "\t" +  getMealOverExpensesMarker(expense));
         }
 
         System.out.println("Meal expenses: " + mealExpenses);
@@ -53,7 +53,4 @@ public class ExpenseReport {
                 expense.type == ExpenseType.BREAKFAST && expense.amount > 1000 ? "X" : " ";
     }
 
-    private static String getExpenseName(Expense expense) {
-        return expense.type.getName();
-    }
 }
