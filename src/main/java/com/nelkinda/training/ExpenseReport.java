@@ -3,10 +3,6 @@ package com.nelkinda.training;
 import java.util.Date;
 import java.util.List;
 
-enum ExpenseType {
-    DINNER, BREAKFAST, CAR_RENTAL
-}
-
 class Expense {
     ExpenseType type;
     int amount;
