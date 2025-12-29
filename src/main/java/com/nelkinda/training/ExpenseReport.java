@@ -20,12 +20,17 @@ public class ExpenseReport {
             mealExpenses = calculateMealExpense(expense, mealExpenses);
         }
 
+        int total = calculateTotal(expenses);
+
+        printReport(expenses, mealExpenses, total);
+    }
+
+    private static int calculateTotal(List<Expense> expenses) {
         int total = 0;
         for (Expense expense : expenses) {
             total += expense.amount;
         }
-
-        printReport(expenses, mealExpenses, total);
+        return total;
     }
 
     private static void printReport(List<Expense> expenses, int mealExpenses, int total) {
