@@ -25,14 +25,17 @@ public class ExpenseReport {
         for (Expense expense : expenses) {
             mealExpenses = calculateMealExpense(expense, mealExpenses);
         }
+
         return mealExpenses;
     }
 
     private static int calculateTotal(List<Expense> expenses) {
         int total = 0;
+
         for (Expense expense : expenses) {
             total += expense.amount;
         }
+
         return total;
     }
 
