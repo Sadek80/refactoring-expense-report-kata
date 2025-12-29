@@ -10,7 +10,13 @@ public class ExpenseReport {
     }
 
     private static ExpenseReportDetails getReportDetails(List<Expense> expenses) {
-        return new ExpenseReportDetails(calculateTotal(expenses), calculateMealExpenses(expenses));
+        int total = 0;
+
+        for (Expense expense : expenses) {
+            total += expense.amount;
+        }
+
+        return new ExpenseReportDetails(total, calculateMealExpenses(expenses));
     }
 
     private static int calculateMealExpenses(List<Expense> expenses) {
@@ -21,16 +27,6 @@ public class ExpenseReport {
         }
 
         return mealExpenses;
-    }
-
-    private static int calculateTotal(List<Expense> expenses) {
-        int total = 0;
-
-        for (Expense expense : expenses) {
-            total += expense.amount;
-        }
-
-        return total;
     }
 
     private static void printReport(List<Expense> expenses, int mealExpenses, int total) {
