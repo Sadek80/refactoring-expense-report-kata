@@ -14,11 +14,14 @@ class Expense {
 
 public class ExpenseReport {
     public void printReport(List<Expense> expenses) {
-        int total = 0;
         int mealExpenses = 0;
 
         for (Expense expense : expenses) {
             mealExpenses = calculateMealExpense(expense, mealExpenses);
+        }
+
+        int total = 0;
+        for (Expense expense : expenses) {
             total += expense.amount;
         }
 
