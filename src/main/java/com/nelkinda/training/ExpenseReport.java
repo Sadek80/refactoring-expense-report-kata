@@ -17,12 +17,12 @@ public class ExpenseReport {
         int total = 0;
         int mealExpenses = 0;
 
-        System.out.println("Expenses " + new Date());
-
         for (Expense expense : expenses) {
             mealExpenses = calculateMealExpense(expense, mealExpenses);
             total += expense.amount;
         }
+
+        System.out.println("Expenses " + new Date());
 
         for (Expense expense : expenses) {
             printExpenseContribution(expense);
