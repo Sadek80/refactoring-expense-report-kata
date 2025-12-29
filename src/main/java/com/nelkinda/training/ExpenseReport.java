@@ -38,18 +38,10 @@ public class ExpenseReport {
     }
 
     private static String getExpenseName(Expense expense) {
-        String expenseName = "";
-        switch (expense.type) {
-            case DINNER:
-                expenseName = "Dinner";
-                break;
-            case BREAKFAST:
-                expenseName = "Breakfast";
-                break;
-            case CAR_RENTAL:
-                expenseName = "Car Rental";
-                break;
-        }
-        return expenseName;
+        return switch (expense.type) {
+            case DINNER -> "Dinner";
+            case BREAKFAST -> "Breakfast";
+            case CAR_RENTAL -> "Car Rental";
+        };
     }
 }
