@@ -5,8 +5,12 @@ import java.util.List;
 
 public class ExpenseReport {
     public void printReport(List<Expense> expenses) {
-        var reportDetails = new ExpenseReportDetails(calculateTotal(expenses), calculateMealExpenses(expenses));
+        var reportDetails = getReportDetails(expenses);
         printReport(expenses, reportDetails.getMealExpenses(), reportDetails.getTotal());
+    }
+
+    private static ExpenseReportDetails getReportDetails(List<Expense> expenses) {
+        return new ExpenseReportDetails(calculateTotal(expenses), calculateMealExpenses(expenses));
     }
 
     private static int calculateMealExpenses(List<Expense> expenses) {
