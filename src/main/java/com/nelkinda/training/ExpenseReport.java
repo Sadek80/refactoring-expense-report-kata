@@ -3,11 +3,6 @@ package com.nelkinda.training;
 import java.util.Date;
 import java.util.List;
 
-class Expense {
-    ExpenseType type;
-    int amount;
-}
-
 public class ExpenseReport {
     public void printReport(List<Expense> expenses) {
         int mealExpenses = calculateMealExpenses(expenses);
