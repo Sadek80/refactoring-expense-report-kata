@@ -32,10 +32,7 @@ public class ExpenseReport {
     }
 
     private static void printExpenseContribution(Expense expense) {
-        String expenseName = getExpenseName(expense);
-        String mealOverExpensesMarker = getMealOverExpensesMarker(expense);
-
-        System.out.println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
+        System.out.println(getExpenseName(expense) + "\t" + expense.amount + "\t" +  getMealOverExpensesMarker(expense));
     }
 
     private static int calculateMealExpense(Expense expense, int mealExpenses) {
