@@ -22,6 +22,10 @@ public class ExpenseReport {
             total += expense.amount;
         }
 
+        printReport(expenses, mealExpenses, total);
+    }
+
+    private static void printReport(List<Expense> expenses, int mealExpenses, int total) {
         System.out.println("Expenses " + new Date());
 
         for (Expense expense : expenses) {
