@@ -25,7 +25,6 @@ public class ExpenseReport {
             }
 
             String expenseName = getExpenseName(expense);
-
             String mealOverExpensesMarker = getMealOverExpensesMarker(expense);
 
             System.out.println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
