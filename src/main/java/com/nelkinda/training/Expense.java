@@ -7,4 +7,8 @@ class Expense {
     public String expenseName() {
         return type.getName();
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }
