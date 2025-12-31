@@ -21,7 +21,7 @@ public class ExpenseReport {
             total += expense.getAmount();
         }
 
-        return new ExpenseReportDetails(total, mealExpenses);
+        return new ExpenseReportDetails(total, mealExpenses, List.of());
     }
 
     private static void printReport(List<Expense> expenses, ExpenseReportDetails details) {

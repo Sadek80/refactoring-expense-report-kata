@@ -1,12 +1,16 @@
 package com.nelkinda.training;
 
+import java.util.List;
+
 public class ExpenseReportDetails {
     private final int total;
     private final int mealExpenses;
+    private final List<ExpenseDetails> expenses;
 
-    public ExpenseReportDetails(int total, int mealExpenses){
+    public ExpenseReportDetails(int total, int mealExpenses, List<ExpenseDetails> expenses){
         this.total = total;
         this.mealExpenses = mealExpenses;
+        this.expenses = expenses;
     }
 
     public int getTotal() {
