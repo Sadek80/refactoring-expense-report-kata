@@ -22,26 +22,15 @@ class ExpenseReportTest {
         System.setOut(new PrintStream(out));
 
         try {
-            var dinnerExpenseBelowLimit = new Expense();
-            dinnerExpenseBelowLimit.type = ExpenseType.DINNER;
-            dinnerExpenseBelowLimit.amount = 500;
+            var dinnerExpenseBelowLimit = new Expense(ExpenseType.DINNER, 500);
 
-            var dinnerExpenseExceedsLimit = new Expense();
-            dinnerExpenseExceedsLimit.type = ExpenseType.DINNER;
-            dinnerExpenseExceedsLimit.amount = 5001;
+            var dinnerExpenseExceedsLimit = new Expense(ExpenseType.DINNER, 5001);
 
-            var breakfastExpenseBelowLimit = new Expense();
-            breakfastExpenseBelowLimit.type = ExpenseType.BREAKFAST;
-            breakfastExpenseBelowLimit.amount = 500;
+            var breakfastExpenseBelowLimit = new Expense(ExpenseType.BREAKFAST, 500);
 
-            var breakfastExpenseExceedsLimit = new Expense();
-            breakfastExpenseExceedsLimit.type = ExpenseType.BREAKFAST;
-            breakfastExpenseExceedsLimit.amount = 5001;
+            var breakfastExpenseExceedsLimit = new Expense(ExpenseType.BREAKFAST, 5001);
 
-            var carRentalExpense = new Expense();
-            carRentalExpense.type = ExpenseType.CAR_RENTAL;
-            carRentalExpense.amount = 50;
-
+            var carRentalExpense = new Expense(ExpenseType.CAR_RENTAL, 50);
 
             var expensesList = List.of(dinnerExpenseBelowLimit,
                     dinnerExpenseExceedsLimit,
