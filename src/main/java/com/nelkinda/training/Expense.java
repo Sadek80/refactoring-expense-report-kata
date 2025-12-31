@@ -11,4 +11,8 @@ class Expense {
     public int getAmount() {
         return amount;
     }
+
+    public ExpenseType getType() {
+        return type;
+    }
 }
