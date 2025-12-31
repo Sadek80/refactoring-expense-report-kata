@@ -14,7 +14,7 @@ public class ExpenseReport {
         int mealExpenses = 0;
 
         for (Expense expense : expenses) {
-            if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
+            if (expense.getType() == ExpenseType.DINNER || expense.getType() == ExpenseType.BREAKFAST) {
                 mealExpenses += expense.getAmount();
             }
 
