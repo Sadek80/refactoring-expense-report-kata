@@ -28,7 +28,7 @@ public class ExpenseReport {
         System.out.println("Expenses " + new Date());
 
         for (Expense expense : expenses) {
-            System.out.println(expense.expenseName() + "\t" + expense.amount + "\t" + getMealOverExpensesMarker(expense));
+            System.out.println(expense.getExpenseName() + "\t" + expense.amount + "\t" + getMealOverExpensesMarker(expense));
         }
 
         System.out.println("Meal expenses: " + details.getMealExpenses());

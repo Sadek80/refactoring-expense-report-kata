@@ -4,7 +4,7 @@ class Expense {
     ExpenseType type;
     int amount;
 
-    public String expenseName() {
+    public String getExpenseName() {
         return type.getName();
     }
 
