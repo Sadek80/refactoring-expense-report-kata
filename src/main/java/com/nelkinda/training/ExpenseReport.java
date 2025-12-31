@@ -15,7 +15,7 @@ public class ExpenseReport {
 
         for (Expense expense : expenses) {
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
-                mealExpenses += expense.amount;
+                mealExpenses += expense.getAmount();
             }
 
             total += expense.getAmount();
