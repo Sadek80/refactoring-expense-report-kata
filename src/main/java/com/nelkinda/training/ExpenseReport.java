@@ -18,7 +18,7 @@ public class ExpenseReport {
                 mealExpenses += expense.amount;
             }
 
-            total += expense.amount;
+            total += expense.getAmount();
         }
 
         return new ExpenseReportDetails(total, mealExpenses);
