@@ -36,7 +36,7 @@ public class ExpenseReport {
     }
 
     private static String getMealOverExpensesMarker(Expense expense) {
-        return expense.type == ExpenseType.DINNER && expense.amount > 5000 ||
-                expense.type == ExpenseType.BREAKFAST && expense.amount > 1000 ? "X" : " ";
+        return expense.type == ExpenseType.DINNER && expense.getAmount() > 5000 ||
+                expense.type == ExpenseType.BREAKFAST && expense.getAmount() > 1000 ? "X" : " ";
     }
 }
