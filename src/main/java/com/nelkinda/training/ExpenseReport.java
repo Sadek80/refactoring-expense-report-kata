@@ -7,7 +7,7 @@ import java.util.List;
 public class ExpenseReport {
     public void printReport(List<Expense> expenses) {
         var reportDetails = getReportDetails(expenses);
-        printReport(expenses, reportDetails);
+        printReport(reportDetails);
     }
 
     private static ExpenseReportDetails getReportDetails(List<Expense> expenses) {
@@ -32,7 +32,7 @@ public class ExpenseReport {
         return new ExpenseReportDetails(total, mealExpenses, expenseDetails);
     }
 
-    private static void printReport(List<Expense> expenses, ExpenseReportDetails details) {
+    private static void printReport(ExpenseReportDetails details) {
         System.out.println("Expenses " + new Date());
 
         for (ExpenseDetails expense : details.getExpenses()) {
