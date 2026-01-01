@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenseReport {
-    private IClock clock;
+    private final IClock clock;
 
     public ExpenseReport(IClock clock){
         this.clock = clock;
