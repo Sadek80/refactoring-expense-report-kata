@@ -16,7 +16,7 @@ public class ExpenseReport {
         List<ExpenseDetails> expenseDetails = new ArrayList<>();
 
         for (Expense expense : expenses) {
-            if (Expense.isMeal(expense)) {
+            if (expense.isMeal()) {
                 mealExpenses += expense.getAmount();
             }
 

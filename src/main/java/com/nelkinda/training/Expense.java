@@ -3,14 +3,16 @@ package com.nelkinda.training;
 class Expense {
     private ExpenseType type;
     private int amount;
-
+    private boolean isMeal;
+    
     public Expense(ExpenseType type, int amount) {
         this.type = type;
         this.amount = amount;
+        this.isMeal = type == ExpenseType.DINNER || type == ExpenseType.BREAKFAST;
     }
 
-    static boolean isMeal(Expense expense) {
-        return expense.getType() == ExpenseType.DINNER || expense.getType() == ExpenseType.BREAKFAST;
+    public boolean isMeal() {
+        return isMeal;
     }
 
     public String getExpenseName() {
