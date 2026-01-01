@@ -1,6 +1,9 @@
 package com.nelkinda.training;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,6 +15,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
+@ExtendWith(MockitoExtension.class)
 class ExpenseReportTest {
 
     ZoneId zone = ZoneId.of("Africa/Cairo");
@@ -19,7 +23,10 @@ class ExpenseReportTest {
     Date lastDay2025Date = Date.from(instant);
 
     private final IClock clock = new ClockStub(lastDay2025Date);
-    private final IPrinter printer = new Printer();
+
+    @Spy
+    private IPrinter printer = new Printer();
+
     private final ExpenseReport expenseReport = new ExpenseReport(clock, printer);
 
     @Test
