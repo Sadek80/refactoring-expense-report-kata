@@ -6,13 +6,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-
 class ExpenseReportTest {
 
-    private final ExpenseReport expenseReport = new ExpenseReport(new Clock());
+    ZoneId zone = ZoneId.of("Africa/Cairo");
+    Instant instant = LocalDate.of(2025, 12, 31).atStartOfDay(zone).toInstant();
+    Date lastDay2025Date = Date.from(instant);
+
+    private final IClock clock = new ClockStub(lastDay2025Date);
+    private final ExpenseReport expenseReport = new ExpenseReport(clock);
 
     @Test
     void printReport_characterization() {
@@ -53,7 +60,7 @@ class ExpenseReportTest {
                     Car Rental	50	\s
                     Meal expenses: 11002
                     Total expenses: 11052
-                    """, new Date()));
+                    """, clock.getDate()));
 
         } finally {
             System.setOut(originalOut);
