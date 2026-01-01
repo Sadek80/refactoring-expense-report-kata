@@ -1,8 +1,8 @@
 package com.nelkinda.training;
 
 class Expense {
-    ExpenseType type;
-    int amount;
+    private ExpenseType type;
+    private int amount;
 
     public Expense(ExpenseType type, int amount) {
         this.type = type;
