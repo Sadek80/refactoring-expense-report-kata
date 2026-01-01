@@ -39,4 +39,9 @@ public class ExpenseReport {
         return expense.type == ExpenseType.DINNER && expense.getAmount() > 5000 ||
                 expense.type == ExpenseType.BREAKFAST && expense.getAmount() > 1000 ? "X" : " ";
     }
+
+    private static boolean isOverExpense(Expense expense) {
+        return expense.type == ExpenseType.DINNER && expense.getAmount() > 5000 ||
+                expense.type == ExpenseType.BREAKFAST && expense.getAmount() > 1000;
+    }
 }
