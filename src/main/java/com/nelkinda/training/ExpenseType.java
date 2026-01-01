@@ -1,17 +1,23 @@
 package com.nelkinda.training;
 
 enum ExpenseType {
-    DINNER("Dinner"),
-    BREAKFAST("Breakfast"),
-    CAR_RENTAL("Car Rental");
+    DINNER("Dinner", true),
+    BREAKFAST("Breakfast", true),
+    CAR_RENTAL("Car Rental", false);
 
     private final String name;
+    private final boolean isMeal;
 
-    ExpenseType(String name) {
+    ExpenseType(String name, boolean isMeal) {
         this.name = name;
+        this.isMeal = isMeal;
     }
 
     public String getName() {
         return name;
+    }
+
+    public boolean isMeal() {
+        return isMeal;
     }
 }
