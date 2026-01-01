@@ -82,4 +82,69 @@ class ExpenseReportTest {
             System.setOut(originalOut);
         }
     }
+
+    @Test
+    void printReport_dinnerBelowLimit() {
+        expenseReport.printReport(List.of(new Expense(ExpenseType.DINNER, 500)));
+
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("Expenses " + clock.getDate());
+        inOrder.verify(printer).print("Dinner\t500\t ");
+        inOrder.verify(printer).print("Meal expenses: 500");
+        inOrder.verify(printer).print("Total expenses: 500");
+
+        verifyNoMoreInteractions(printer);
+    }
+
+    @Test
+    void printReport_dinnerOverLimitMarksX() {
+        expenseReport.printReport(List.of(new Expense(ExpenseType.DINNER, 5001)));
+
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("Expenses " + clock.getDate());
+        inOrder.verify(printer).print("Dinner\t5001\tX");
+        inOrder.verify(printer).print("Meal expenses: 5001");
+        inOrder.verify(printer).print("Total expenses: 5001");
+
+        verifyNoMoreInteractions(printer);
+    }
+
+    @Test
+    void printReport_breakfastBelowLimit() {
+        expenseReport.printReport(List.of(new Expense(ExpenseType.BREAKFAST, 500)));
+
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("Expenses " + clock.getDate());
+        inOrder.verify(printer).print("Breakfast\t500\t ");
+        inOrder.verify(printer).print("Meal expenses: 500");
+        inOrder.verify(printer).print("Total expenses: 500");
+
+        verifyNoMoreInteractions(printer);
+    }
+
+    @Test
+    void printReport_breakfastOverLimitMarksX() {
+        expenseReport.printReport(List.of(new Expense(ExpenseType.BREAKFAST, 5001)));
+
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("Expenses " + clock.getDate());
+        inOrder.verify(printer).print("Breakfast\t5001\tX");
+        inOrder.verify(printer).print("Meal expenses: 5001");
+        inOrder.verify(printer).print("Total expenses: 5001");
+
+        verifyNoMoreInteractions(printer);
+    }
+
+    @Test
+    void printReport_carRental() {
+        expenseReport.printReport(List.of(new Expense(ExpenseType.CAR_RENTAL, 50)));
+
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("Expenses " + clock.getDate());
+        inOrder.verify(printer).print("Car Rental\t50\t ");
+        inOrder.verify(printer).print("Meal expenses: 0");
+        inOrder.verify(printer).print("Total expenses: 50");
+
+        verifyNoMoreInteractions(printer);
+    }
 }
