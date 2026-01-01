@@ -25,7 +25,7 @@ public class ExpenseReport {
             expenseDetails.add(new ExpenseDetails(
                     expense.getAmount(),
                     expense.getExpenseName(),
-                    isOverExpense(expense)
+                    Expense.isOverExpense(expense)
             ));
         }
 
@@ -47,8 +47,4 @@ public class ExpenseReport {
         return expenseDetails.isMealOverExpense() ? "X" : " ";
     }
 
-    private static boolean isOverExpense(Expense expense) {
-        return expense.getType() == ExpenseType.DINNER && expense.getAmount() > 5000 ||
-                expense.getType() == ExpenseType.BREAKFAST && expense.getAmount() > 1000;
-    }
 }
