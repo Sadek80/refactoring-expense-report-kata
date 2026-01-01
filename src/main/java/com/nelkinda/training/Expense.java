@@ -17,7 +17,7 @@ class Expense {
     }
 
     public boolean isMeal() {
-        return isMeal;
+        return type.isMeal();
     }
 
     public String getExpenseName() {
