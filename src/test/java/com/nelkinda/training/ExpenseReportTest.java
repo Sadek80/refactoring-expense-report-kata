@@ -1,11 +1,17 @@
 package com.nelkinda.training;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -18,16 +24,17 @@ import java.util.List;
 @ExtendWith(MockitoExtension.class)
 class ExpenseReportTest {
 
-    ZoneId zone = ZoneId.of("Africa/Cairo");
-    Instant instant = LocalDate.of(2025, 12, 31).atStartOfDay(zone).toInstant();
-    Date lastDay2025Date = Date.from(instant);
-
-    private final IClock clock = new ClockStub(lastDay2025Date);
+    private final ZoneId zone = ZoneId.of("Africa/Cairo");
+    private final Instant instant = LocalDate.of(2025, 12, 31).atStartOfDay(zone).toInstant();
+    private final Date lastDay2025Date = Date.from(instant);
 
     @Spy
-    private IPrinter printer = new Printer();
+    private IClock clock = new ClockStub(lastDay2025Date);
+    @Mock
+    private IPrinter printer;
 
-    private final ExpenseReport expenseReport = new ExpenseReport(clock, printer);
+    @InjectMocks
+    private ExpenseReport expenseReport;
 
     @Test
     void printReport_characterization() {
@@ -54,6 +61,7 @@ class ExpenseReportTest {
                     carRentalExpense);
 
             // Act
+            var expenseReport = new ExpenseReport(clock, new Printer());
             expenseReport.printReport(expensesList);
 
             // Assert
