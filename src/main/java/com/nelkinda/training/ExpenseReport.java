@@ -1,7 +1,6 @@
 package com.nelkinda.training;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ExpenseReport {
@@ -39,7 +38,7 @@ public class ExpenseReport {
     }
 
     private void printReport(ExpenseReportDetails details) {
-        System.out.println("Expenses " + new Date());
+        System.out.println("Expenses " + clock.getDate());
 
         for (ExpenseDetails expense : details.getExpenses()) {
             System.out.println(expense.getName() + "\t" + expense.getAmount() + "\t" + getMealOverExpensesMarker(expense));
