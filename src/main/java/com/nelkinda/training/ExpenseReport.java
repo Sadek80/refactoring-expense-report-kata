@@ -35,8 +35,8 @@ public class ExpenseReport {
     private static void printReport(List<Expense> expenses, ExpenseReportDetails details) {
         System.out.println("Expenses " + new Date());
 
-        for (Expense expense : expenses) {
-            System.out.println(expense.getExpenseName() + "\t" + expense.getAmount() + "\t" + getMealOverExpensesMarker(expense));
+        for (ExpenseDetails expense : details.getExpenses()) {
+            System.out.println(expense.getName() + "\t" + expense.getAmount() + "\t" + getMealOverExpensesMarker(expense));
         }
 
         System.out.println("Meal expenses: " + details.getMealExpenses());
