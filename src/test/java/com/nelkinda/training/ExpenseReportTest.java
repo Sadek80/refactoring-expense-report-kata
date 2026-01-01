@@ -52,13 +52,19 @@ class ExpenseReportTest {
 
             var breakfastExpenseExceedsLimit = new Expense(ExpenseType.BREAKFAST, 5001);
 
+            var launchExpenseBelowLimit = new Expense(ExpenseType.LAUNCH, 500);
+
+            var launchExpenseExceedsLimit = new Expense(ExpenseType.LAUNCH, 2001);
+
             var carRentalExpense = new Expense(ExpenseType.CAR_RENTAL, 50);
 
             var expensesList = List.of(dinnerExpenseBelowLimit,
                     dinnerExpenseExceedsLimit,
                     breakfastExpenseBelowLimit,
                     breakfastExpenseExceedsLimit,
-                    carRentalExpense);
+                    carRentalExpense,
+                    launchExpenseBelowLimit,
+                    launchExpenseExceedsLimit);
 
             // Act
             var expenseReport = new ExpenseReport(clock, new Printer());
@@ -74,8 +80,10 @@ class ExpenseReportTest {
                     Breakfast	500	\s
                     Breakfast	5001	X
                     Car Rental	50	\s
-                    Meal expenses: 11002
-                    Total expenses: 11052
+                    Launch	500	\s
+                    Launch	2001	X
+                    Meal expenses: 13503
+                    Total expenses: 13553
                     """, clock.getDate()));
 
         } finally {
@@ -144,6 +152,32 @@ class ExpenseReportTest {
         inOrder.verify(printer).print("Car Rental\t50\t ");
         inOrder.verify(printer).print("Meal expenses: 0");
         inOrder.verify(printer).print("Total expenses: 50");
+
+        verifyNoMoreInteractions(printer);
+    }
+
+    @Test
+    void printReport_launchBelowLimit() {
+        expenseReport.printReport(List.of(new Expense(ExpenseType.LAUNCH, 500)));
+
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("Expenses " + clock.getDate());
+        inOrder.verify(printer).print("Launch\t500\t ");
+        inOrder.verify(printer).print("Meal expenses: 500");
+        inOrder.verify(printer).print("Total expenses: 500");
+
+        verifyNoMoreInteractions(printer);
+    }
+
+    @Test
+    void printReport_launchOverLimitMarksX() {
+        expenseReport.printReport(List.of(new Expense(ExpenseType.LAUNCH, 2001)));
+
+        InOrder inOrder = inOrder(printer);
+        inOrder.verify(printer).print("Expenses " + clock.getDate());
+        inOrder.verify(printer).print("Launch\t2001\tX");
+        inOrder.verify(printer).print("Meal expenses: 2001");
+        inOrder.verify(printer).print("Total expenses: 2001");
 
         verifyNoMoreInteractions(printer);
     }
