@@ -43,11 +43,6 @@ public class ExpenseReport {
         System.out.println("Total expenses: " + details.getTotal());
     }
 
-    private static String getMealOverExpensesMarker(Expense expense) {
-        return expense.type == ExpenseType.DINNER && expense.getAmount() > 5000 ||
-                expense.type == ExpenseType.BREAKFAST && expense.getAmount() > 1000 ? "X" : " ";
-    }
-
     private static String getMealOverExpensesMarker(ExpenseDetails expenseDetails) {
         return expenseDetails.isMealOverExpense() ? "X" : " ";
     }
