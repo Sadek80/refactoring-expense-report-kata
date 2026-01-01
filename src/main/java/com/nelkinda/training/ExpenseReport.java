@@ -40,14 +40,14 @@ public class ExpenseReport {
     }
 
     private void printReport(ExpenseReportDetails details) {
-        System.out.println("Expenses " + clock.getDate());
+        printer.print("Expenses " + clock.getDate());
 
         for (ExpenseDetails expense : details.getExpenses()) {
-            System.out.println(expense.getName() + "\t" + expense.getAmount() + "\t" + getMealOverExpensesMarker(expense));
+            printer.print(expense.getName() + "\t" + expense.getAmount() + "\t" + getMealOverExpensesMarker(expense));
         }
 
-        System.out.println("Meal expenses: " + details.getMealExpenses());
-        System.out.println("Total expenses: " + details.getTotal());
+        printer.print("Meal expenses: " + details.getMealExpenses());
+        printer.print("Total expenses: " + details.getTotal());
     }
 
     private String getMealOverExpensesMarker(ExpenseDetails expenseDetails) {
