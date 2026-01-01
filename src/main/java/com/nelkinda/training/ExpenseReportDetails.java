@@ -1,5 +1,6 @@
 package com.nelkinda.training;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ExpenseReportDetails {
@@ -19,5 +20,9 @@ public class ExpenseReportDetails {
 
     public int getMealExpenses() {
         return mealExpenses;
+    }
+
+    public List<ExpenseDetails> getExpenses() {
+        return Collections.unmodifiableList(expenses);
     }
 }
