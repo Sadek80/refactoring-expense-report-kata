@@ -16,7 +16,7 @@ public class ExpenseReport {
         List<ExpenseDetails> expenseDetails = new ArrayList<>();
 
         for (Expense expense : expenses) {
-            if (isMeal(expense)) {
+            if (Expense.isMeal(expense)) {
                 mealExpenses += expense.getAmount();
             }
 
@@ -30,10 +30,6 @@ public class ExpenseReport {
         }
 
         return new ExpenseReportDetails(total, mealExpenses, expenseDetails);
-    }
-
-    private static boolean isMeal(Expense expense) {
-        return expense.getType() == ExpenseType.DINNER || expense.getType() == ExpenseType.BREAKFAST;
     }
 
     private static void printReport(ExpenseReportDetails details) {
