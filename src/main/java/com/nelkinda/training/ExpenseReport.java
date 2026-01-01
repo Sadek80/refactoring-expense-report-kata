@@ -16,7 +16,7 @@ public class ExpenseReport {
         printReport(reportDetails);
     }
 
-    private static ExpenseReportDetails getReportDetails(List<Expense> expenses) {
+    private ExpenseReportDetails getReportDetails(List<Expense> expenses) {
         int total = 0;
         int mealExpenses = 0;
         List<ExpenseDetails> expenseDetails = new ArrayList<>();
@@ -38,7 +38,7 @@ public class ExpenseReport {
         return new ExpenseReportDetails(total, mealExpenses, expenseDetails);
     }
 
-    private static void printReport(ExpenseReportDetails details) {
+    private void printReport(ExpenseReportDetails details) {
         System.out.println("Expenses " + new Date());
 
         for (ExpenseDetails expense : details.getExpenses()) {
@@ -49,7 +49,7 @@ public class ExpenseReport {
         System.out.println("Total expenses: " + details.getTotal());
     }
 
-    private static String getMealOverExpensesMarker(ExpenseDetails expenseDetails) {
+    private String getMealOverExpensesMarker(ExpenseDetails expenseDetails) {
         return expenseDetails.isMealOverExpense() ? "X" : " ";
     }
 
