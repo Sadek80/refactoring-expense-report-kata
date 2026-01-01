@@ -11,9 +11,9 @@ class Expense {
         this.isMeal = type == ExpenseType.DINNER || type == ExpenseType.BREAKFAST;
     }
 
-    static boolean isOverExpense(Expense expense) {
-        return expense.getType() == ExpenseType.DINNER && expense.getAmount() > 5000 ||
-                expense.getType() == ExpenseType.BREAKFAST && expense.getAmount() > 1000;
+    public boolean isOverExpense() {
+        return this.type == ExpenseType.DINNER && this.amount > 5000 ||
+                this.type == ExpenseType.BREAKFAST && this.amount > 1000;
     }
 
     public boolean isMeal() {

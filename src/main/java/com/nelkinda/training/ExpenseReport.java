@@ -25,7 +25,7 @@ public class ExpenseReport {
             expenseDetails.add(new ExpenseDetails(
                     expense.getAmount(),
                     expense.getExpenseName(),
-                    Expense.isOverExpense(expense)
+                    expense.isOverExpense()
             ));
         }
 
