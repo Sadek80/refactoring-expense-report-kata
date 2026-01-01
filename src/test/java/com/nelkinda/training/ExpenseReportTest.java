@@ -12,7 +12,7 @@ import java.util.List;
 
 class ExpenseReportTest {
 
-    private final ExpenseReport expenseReport = new ExpenseReport();
+    private final ExpenseReport expenseReport = new ExpenseReport(new Clock());
 
     @Test
     void printReport_characterization() {

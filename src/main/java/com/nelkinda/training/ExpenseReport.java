@@ -5,6 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 public class ExpenseReport {
+    private IClock clock;
+
+    public ExpenseReport(IClock clock){
+        this.clock = clock;
+    }
+
     public void printReport(List<Expense> expenses) {
         var reportDetails = getReportDetails(expenses);
         printReport(reportDetails);
