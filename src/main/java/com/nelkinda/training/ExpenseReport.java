@@ -29,7 +29,7 @@ public class ExpenseReport {
             ));
         }
 
-        return new ExpenseReportDetails(total, mealExpenses, List.of());
+        return new ExpenseReportDetails(total, mealExpenses, expenseDetails);
     }
 
     private static void printReport(List<Expense> expenses, ExpenseReportDetails details) {
