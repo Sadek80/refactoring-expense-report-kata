@@ -5,9 +5,11 @@ import java.util.List;
 
 public class ExpenseReport {
     private final IClock clock;
+    private final IPrinter printer;
 
-    public ExpenseReport(IClock clock){
+    public ExpenseReport(IClock clock, IPrinter printer){
         this.clock = clock;
+        this.printer = printer;
     }
 
     public void printReport(List<Expense> expenses) {

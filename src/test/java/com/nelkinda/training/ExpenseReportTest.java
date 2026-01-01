@@ -19,7 +19,8 @@ class ExpenseReportTest {
     Date lastDay2025Date = Date.from(instant);
 
     private final IClock clock = new ClockStub(lastDay2025Date);
-    private final ExpenseReport expenseReport = new ExpenseReport(clock);
+    private final IPrinter printer = new Printer();
+    private final ExpenseReport expenseReport = new ExpenseReport(clock, printer);
 
     @Test
     void printReport_characterization() {
