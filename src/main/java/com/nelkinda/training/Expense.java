@@ -28,7 +28,4 @@ class Expense {
         return amount;
     }
 
-    public ExpenseType getType() {
-        return type;
-    }
 }
