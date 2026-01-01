@@ -1,5 +1,6 @@
 package com.nelkinda.training;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class ExpenseReport {
     private static ExpenseReportDetails getReportDetails(List<Expense> expenses) {
         int total = 0;
         int mealExpenses = 0;
+        List<ExpenseDetails> expenseDetails = new ArrayList<>();
 
         for (Expense expense : expenses) {
             if (expense.getType() == ExpenseType.DINNER || expense.getType() == ExpenseType.BREAKFAST) {
@@ -19,6 +21,12 @@ public class ExpenseReport {
             }
 
             total += expense.getAmount();
+
+            expenseDetails.add(new ExpenseDetails(
+                    expense.getAmount(),
+                    expense.getExpenseName(),
+                    isOverExpense(expense)
+            ));
         }
 
         return new ExpenseReportDetails(total, mealExpenses, List.of());
