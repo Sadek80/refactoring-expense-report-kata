@@ -1,50 +1,57 @@
 package com.nelkinda.training;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
-enum ExpenseType {
-    DINNER, BREAKFAST, CAR_RENTAL
-}
-
-class Expense {
-    ExpenseType type;
-    int amount;
-}
-
 public class ExpenseReport {
+    private final IClock clock;
+    private final IPrinter printer;
+
+    public ExpenseReport(IClock clock, IPrinter printer){
+        this.clock = clock;
+        this.printer = printer;
+    }
+
     public void printReport(List<Expense> expenses) {
+        var reportDetails = getReportDetails(expenses);
+        printReport(reportDetails);
+    }
+
+    private ExpenseReportDetails getReportDetails(List<Expense> expenses) {
         int total = 0;
         int mealExpenses = 0;
-
-        System.out.println("Expenses " + new Date());
+        List<ExpenseDetails> expenseDetails = new ArrayList<>();
 
         for (Expense expense : expenses) {
-            if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
-                mealExpenses += expense.amount;
+            if (expense.isMeal()) {
+                mealExpenses += expense.getAmount();
             }
 
-            String expenseName = "";
-            switch (expense.type) {
-                case DINNER:
-                    expenseName = "Dinner";
-                    break;
-                case BREAKFAST:
-                    expenseName = "Breakfast";
-                    break;
-                case CAR_RENTAL:
-                    expenseName = "Car Rental";
-                    break;
-            }
+            total += expense.getAmount();
 
-            String mealOverExpensesMarker = expense.type == ExpenseType.DINNER && expense.amount > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount > 1000 ? "X" : " ";
-
-            System.out.println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
-
-            total += expense.amount;
+            expenseDetails.add(new ExpenseDetails(
+                    expense.getAmount(),
+                    expense.getExpenseName(),
+                    expense.isOverExpense()
+            ));
         }
 
-        System.out.println("Meal expenses: " + mealExpenses);
-        System.out.println("Total expenses: " + total);
+        return new ExpenseReportDetails(total, mealExpenses, expenseDetails);
     }
+
+    private void printReport(ExpenseReportDetails details) {
+        printer.print("Expenses " + clock.getDate());
+
+        for (ExpenseDetails expense : details.getExpenses()) {
+            printer.print(expense.getName() + "\t" + expense.getAmount() + "\t" + getMealOverExpensesMarker(expense));
+        }
+
+        printer.print("Meal expenses: " + details.getMealExpenses());
+        printer.print("Total expenses: " + details.getTotal());
+    }
+
+    private String getMealOverExpensesMarker(ExpenseDetails expenseDetails) {
+        return expenseDetails.isMealOverExpense() ? "X" : " ";
+    }
+
 }
